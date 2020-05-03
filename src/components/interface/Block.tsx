@@ -12,8 +12,8 @@ const BlockComponent: React.FunctionComponent<BlockProps> = (props: BlockProps) 
 		<pre className={'text-block'}>
 			{props.block.lines.map(({ text }) => text).join('\n')}
 		</pre>
-		{props.block.lines.map(({ chordLine }) => chordLine).map((chordLines, index) => {
-			return chordLines.map(chord => <ChordComponent chord={chord} lineIndex={index}></ChordComponent>)
+		{props.block.lines.map(({ chords }) => chords).map((chordLines, index) => {
+			return chordLines.map((chord, key) => <ChordComponent key={key} chord={chord} lineIndex={index}/>)
 		})}
 	</div>
 };

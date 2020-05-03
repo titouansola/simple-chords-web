@@ -1,5 +1,5 @@
 import SongState from './song';
 
-export default class State {
-	public song = new SongState();
+export default interface State {
+	song: SongState;
 }

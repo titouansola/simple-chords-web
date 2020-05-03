@@ -1,3 +1,5 @@
-export default class SongState {
-	
+import Song from '../../models/Song';
+
+export default interface SongState {
+	current: Song;
 }

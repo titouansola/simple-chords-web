@@ -9,6 +9,9 @@
     "dev": "parcel src/index.html"
   },
   "dependencies": {
+    "@types/node": "^13.13.4",
+    "axios": "^0.19.2",
+    "crooks": "^1.0.23",
     "lodash": "^4.17.15",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

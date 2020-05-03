@@ -1,15 +1,11 @@
 import * as React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import { AppContext, appStateReducer } from './state';
-
 import Song from './components/pages/Song';
-import State from './state/types';
+import AppStateProvider from './state/AppStateProvider';
 
 const App: React.FC<any> = () => {
-	const contextReducer = React.useReducer(appStateReducer, new State());
-	//
-	return <AppContext.Provider value={contextReducer}>
+	return <AppStateProvider>
 		<Router>
 			<Switch>
 				<Route path='/song/:songId'>
@@ -17,7 +13,7 @@ const App: React.FC<any> = () => {
 				</Route>
 			</Switch>
 		</Router>
-	</AppContext.Provider>
+	</AppStateProvider>
 };
 
 export default App;
