@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { AppContext, appStateReducer } from '.';
+import { AppContext } from '..';
+import { appStateReducer } from '../reducers';
 
 const AppStateProvider: React.FC<{ children }> = ({ children }) => {
 	const contextReducer = React.useReducer(appStateReducer, null);

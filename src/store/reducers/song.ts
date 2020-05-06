@@ -1,7 +1,7 @@
-import { Action } from '../';
-import SongState from '../types/song';
-import ActionTypes from '../actionTypes';
-import Song from '../../models/Song';
+import SongState from '../../models/applicative/SongState';
+import ActionTypes from '../../models/enum/ActionTypes';
+import Song from '../../models/business/Song';
+import { Action } from '../../models/applicative/Action';
 
 const initialState: SongState = {
 	current: null

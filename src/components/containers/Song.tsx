@@ -1,6 +1,6 @@
 import * as React from 'react';
-import Song from '../../models/Song';
-import BlockComponent from '../interface/Block';
+import Song from '../../models/business/Song';
+import Part from '../interface/song/Part';
 import { useKeyboardShortcut } from 'crooks';
 
 interface SongProps {
@@ -24,7 +24,7 @@ const SongProvider: React.FC<SongProps> = (props: SongProps) => {
 	});
 
 	return <React.Fragment>
-		<BlockComponent block={song.parts[step]}/>
+		<Part content={song.parts[step]}/>
 		<button onClick={prevStep}>Previous</button>
 		<button onClick={nextStep}>Next</button>
 	</React.Fragment>

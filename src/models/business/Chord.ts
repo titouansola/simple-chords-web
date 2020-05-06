@@ -18,27 +18,16 @@ export enum Fondamental {
 	G_FLAT = 'Gb',
 };
 
-export enum Quality {
-	SEVENTH = '7',
-	MAJOR_SEVENTH = 'M7',
-	DIMINISHED = '°',
-	SUSPENDED_FOUR = 'sus4',
-	SUSPENDED_SECOND = 'sus2',
-	ELEVENTH = '11',
-	THIRTEENTH = '13'
-	// ...
-};
-
 export interface Chord {
 	position: number;
-	fondamental: Fondamental,
-	minor: boolean,
-	qualities: Quality
+	fondamental: Fondamental;
+	minor: boolean;
+	qualities: string;
 }
 
 export function chordTostring(chord: Chord) {
 	const minorAnnotation = chord.minor ? 'm' : ''
-	return `${chord.fondamental}${minorAnnotation}${chord.qualities}`;
+	return `${chord.fondamental}${minorAnnotation}${chord.qualities || ''}`;
 }
 
 export function getChordPosition(chord: Chord) {

@@ -1,7 +1,13 @@
-import { createContext, useContext } from 'react';
-import reducers from './reducers';
-import State from './types';
-import { Action } from './actionTypes';
+import State from '../../models/applicative/State';
+import { Action } from '../../models/applicative/Action';
+
+import song from './song';
+import creator from './creator';
+
+const reducers = {
+	song,
+	creator
+};
 
 export const appStateReducer = (state: State, action: Action): State => {
 	console.log(`Action: ${action.type}, payload:`, action.payload || 'None');
@@ -21,10 +27,4 @@ export const appStateReducer = (state: State, action: Action): State => {
 	console.log('next state:', newState);
 	
 	return newState;
-}
-
-export const AppContext = createContext<[State, React.Dispatch<Action>]>([null, null]);
-
-export function useAppState() {
-	return useContext(AppContext);
 }
