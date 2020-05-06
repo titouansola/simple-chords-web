@@ -12,10 +12,11 @@ const ChordComponent: React.FunctionComponent<ChordProps> = (props: ChordProps) 
 		chord: {
 			position: 'absolute',
 			left: getChordPosition(props.chord),
-			top: `${(props.lineIndex || 0) * 50}px`,
+			padding: '0 3px',
+			margin: 0
 		}
 	});
-	return <div className={css(styles.chord) + ' chord'}>{chordTostring(props.chord)}</div>
+	return <pre className={css(styles.chord) + ' chord'}>{chordTostring(props.chord)}</pre>
 };
 
 

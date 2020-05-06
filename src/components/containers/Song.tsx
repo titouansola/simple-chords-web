@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Row, Col, Button } from 'react-bootstrap';
 import Song from '../../models/business/Song';
 import Part from '../interface/song/Part';
 import { useKeyboardShortcut } from 'crooks';
@@ -24,9 +25,27 @@ const SongProvider: React.FC<SongProps> = (props: SongProps) => {
 	});
 
 	return <React.Fragment>
-		<Part content={song.parts[step]}/>
-		<button onClick={prevStep}>Previous</button>
-		<button onClick={nextStep}>Next</button>
+		<Row>
+			<Col>
+				<h1>{song.title}</h1>
+				<h6>{song.author}</h6>
+				<p>
+					{song.instrument} - {song.tuning} - Capo: {song.capodastrePosition}
+				</p>
+			</Col>
+		</Row>
+		<Row>
+			<Col>
+				<Part content={song.parts[step]}/>
+			</Col>
+		</Row>
+		<Row>
+			<Col className={'justify-content-between'}>
+				<Button onClick={() => setStep(0)}>Back to beginning</Button>
+				<Button onClick={prevStep}>Previous</Button>
+				<Button onClick={nextStep}>Next</Button>
+			</Col>
+		</Row>
 	</React.Fragment>
 }
 
