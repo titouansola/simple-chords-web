@@ -4,6 +4,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 
 import AppStateProvider from './store/provider/AppStateProvider';
 import Song from './components/pages/Song';
+import SongList from './components/pages/SongList';
 import Creator from './components/pages/Creator';
 
 const App: React.FC<any> = () => {
@@ -20,6 +21,9 @@ const App: React.FC<any> = () => {
 							{/* PUBLIC ROUTES */}
 							<Route path='/song/:songId'>
 								<Song />
+							</Route>
+							<Route>
+								<SongList />
 							</Route>
 						</Switch>
 					</Router>

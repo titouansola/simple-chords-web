@@ -7,6 +7,6 @@ export enum PartType {
 };
 
 export default interface Part {
-	type: PartType,
-	lines: Array<Line>
+	type: PartType;
+	lines: Array<Line>;
 };
