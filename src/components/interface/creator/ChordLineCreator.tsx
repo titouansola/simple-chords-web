@@ -9,6 +9,7 @@ import ChordToolProvider from './ChordToolProvider';
 import DropdownItem from 'react-bootstrap/DropdownItem';
 import { useAppState } from '../../../store';
 import ActionTypes from '../../../models/enum/ActionTypes';
+import { CHORD_OFFSET } from '../../../constants';
 
 interface Props {
 	text: string;
@@ -18,7 +19,6 @@ interface Props {
 }
 
 const OVERLAY_WIDTH = 350;
-const TEXT_MARGIN = 50;
 
 const computeOverlayY = (target: HTMLDivElement) => {
 	const targetY = target.getBoundingClientRect().y;
@@ -42,7 +42,7 @@ const ChordLineCreator: React.FC<Props> = (props: Props) => {
 
 	const showOverlay = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
 		const parentX = (target.current as HTMLDivElement).getBoundingClientRect().x;
-		setChord({ ...chord, position: parseInt((e.clientX - parentX).toFixed(0)) });
+		setChord({ ...chord, position: parseInt((e.clientX - parentX - CHORD_OFFSET).toFixed(0)) });
 		setOverlayX(e.clientX - OVERLAY_WIDTH / 2);
 		setshowOv(true);
 	};
@@ -108,6 +108,8 @@ const ChordLineCreator: React.FC<Props> = (props: Props) => {
 						id={'chorld-line-ov'}
 						style={{
 							...props.style,
+							// Need to override max-width
+							minWidth: OVERLAY_WIDTH,
 							maxWidth: OVERLAY_WIDTH,
 							padding: 5,
 							transform: `translate(${overlayX}px, -${overlayY}px)`
@@ -156,7 +158,7 @@ const styles = StyleSheet.create({
 	clickableBg: {
 		position: 'absolute',
 		color: '#ccc',
-		paddingLeft: TEXT_MARGIN,
+		paddingLeft: CHORD_OFFSET,
 		top: 0,
 		right: 0,
 		bottom: 0,

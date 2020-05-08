@@ -5,6 +5,7 @@ import PartCreator from '../containers/PartCreator';
 import { Form, Row, Col, Button } from 'react-bootstrap';
 import { useAppState } from '../../store';
 import { publishSong } from '../../services/song';
+import ActionTypes from '../../models/enum/ActionTypes';
 
 const Creator: React.FC<any> = () => {
 	const [{ creator }, dispatch] = useAppState();
@@ -13,6 +14,10 @@ const Creator: React.FC<any> = () => {
 		e.preventDefault();
 		publishSong(creator.current);
 	}
+
+	React.useEffect(() => {
+		return () => dispatch({ type: ActionTypes.CREATOR_FLUSH });
+	}, [dispatch]);
 
 	return <React.Fragment>
 		<h1>Song Creator</h1>

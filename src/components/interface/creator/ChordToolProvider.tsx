@@ -5,6 +5,7 @@ import { Chord, chordTostring } from  '../../../models/business/Chord';
 import Draggable, { DraggableData } from 'react-draggable';
 import { useAppState } from '../../../store';
 import ActionTypes from '../../../models/enum/ActionTypes';
+import { CHORD_OFFSET } from '../../../constants';
 
 interface Props {
 	chord: Chord;
@@ -16,6 +17,19 @@ interface Props {
 const ChordToolProvider: React.FC<Props> = (props: Props) => {
 	const [_, dispatch] = useAppState();
 	const [delta, setDelta] = React.useState(0);
+
+	const onStart = (e: MouseEvent) => {
+		if (e.shiftKey) {
+			dispatch({
+				type: ActionTypes.DUPLICATE_CHORD,
+				payload: {
+					partIndex: props.partIndex,
+					lineIndex: props.lineIndex,
+					chordIndex: props.order,
+				}
+			});
+		}
+	};
 
 	const onDrag = (_, data: DraggableData) => {
 		setDelta(delta + data.deltaX);
@@ -38,6 +52,7 @@ const ChordToolProvider: React.FC<Props> = (props: Props) => {
 	};
 
 	const checkAltKeyAndDeleteChord = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+		console.log(props.order, props.chord)
 		if (event.altKey) {
 			dispatch({
 				type: ActionTypes.DEL_CHORD,
@@ -50,11 +65,18 @@ const ChordToolProvider: React.FC<Props> = (props: Props) => {
 		}
 	};
 
+	const position = {
+		x: props.chord.position + CHORD_OFFSET,
+		y: 0
+	};
+
 	return (
 		<Draggable
 			axis={'x'}
 			bounds={'parent'}
-			defaultPosition={{x: props.chord.position, y: 0}}
+			defaultPosition={position}
+			position={position}
+			onStart={onStart}
 			onDrag={onDrag}
 			onStop={onStop}
 			handle={'.handle'}
@@ -63,7 +85,7 @@ const ChordToolProvider: React.FC<Props> = (props: Props) => {
 				{chordTostring(props.chord)}
 			</div>
 		</Draggable>
-	)
+	);
 };
 
 export default ChordToolProvider;
