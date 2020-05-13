@@ -1,0 +1,11 @@
+{
+  "name": "@scw/webservices",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "source": true,
+  "dependencies": {
+    "@scw/models": "*",
+    "axios": "^0.19.2"
+  }
+}
