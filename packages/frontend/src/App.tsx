@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
 
 import AppStateProvider from '@scw/store/AppStateProvider';
-import { HomePage, SongPage, CreatorPage, Header } from '@scw/view';
+import { HomePage, SongPage, CreatorPage, Header } from './components';
 
 const App: React.FC<any> = () => {
 	return <AppStateProvider>

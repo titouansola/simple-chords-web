@@ -1,4 +1,6 @@
+@import './override.bootstrap.scss';
 @import '~bootstrap/scss/bootstrap';
+@import 'notyf/notyf.min.css';
 
 body {
 	position: relative;

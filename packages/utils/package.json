@@ -5,6 +5,7 @@
   "license": "MIT",
   "source": true,
   "dependencies": {
-    "@scw/models": "*"
+    "@scw/models": "*",
+    "notyf": "^3.7.0"
   }
 }

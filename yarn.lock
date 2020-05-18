@@ -3616,6 +3616,11 @@ normalize-url@^3.0.0:
   resolved "https://registry.yarnpkg.com/normalize-url/-/normalize-url-3.3.0.tgz#b2e1c4dc4f7c6d57743df733a4f5978d18650559"
   integrity sha512-U+JJi7duF1o+u2pynbp2zXDW2/PADgC30f0GsHZtRh+HOcXHnw137TrNlyxxRvWW5fjKd3bcLHPxofWuCjaeZg==
 
+notyf@^3.7.0:
+  version "3.7.0"
+  resolved "https://registry.yarnpkg.com/notyf/-/notyf-3.7.0.tgz#adeaab5482fa25259c3682d2aaf5bf3d37cb0421"
+  integrity sha512-YLku5YhncldCrSK/KeRAa3b+G6ylEjSbAWqZcF2NccWNUYhOk9bEvxyKgrZ04bBCmzNKEn6fOKYreYkRfNFYzA==
+
 nth-check@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/nth-check/-/nth-check-1.0.2.tgz#b2bd295c37e3dd58a3bf0700376663ba4d9cf05c"
