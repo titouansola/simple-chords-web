@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { Row, Col, Button } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { useAppState } from '@scw/store';
 import { Part, ActionType } from '@scw/models';
 
@@ -28,7 +30,10 @@ const PartCreator: React.FC<any> = () => {
 		</Col></Row>
 		<Row>
 			<Col>
-				<Button onClick={addPart}>Add part</Button>
+				<Button variant={'secondary'} onClick={addPart} block>
+					<FontAwesomeIcon icon={faPlus} />&nbsp;
+					Add part
+				</Button>
 			</Col>
 		</Row>
 	</React.Fragment>

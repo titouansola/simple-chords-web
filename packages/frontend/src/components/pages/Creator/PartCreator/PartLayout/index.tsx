@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Card, Col, Button, Row, Collapse, ButtonGroup } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { faChevronUp, faChevronDown, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { useAppState } from '@scw/store';
 import { Part, Line, ActionType } from '@scw/models';
 import { MAX_LINES_PER_PART } from '@scw/constants';
@@ -86,6 +86,7 @@ const PartLayout: React.FC<Props> = (props: Props) => {
 						} </Col></Row>
 						<Row className={'mt-4'}><Col>
 							<Button onClick={addLine} disabled={isFull} block>
+								<FontAwesomeIcon icon={faPlus} />&nbsp;
 								{isFull ? 'Full' : 'Add line'} ({props.content.lines.length} / {MAX_LINES_PER_PART})
 							</Button>
 						</Col></Row>

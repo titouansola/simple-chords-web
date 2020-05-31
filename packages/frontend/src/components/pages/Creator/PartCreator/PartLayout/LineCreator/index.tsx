@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Form, Col, InputGroup, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes, faCopy, faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faCopy, faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { useAppState } from '@scw/store';
 import { Line, ActionType } from '@scw/models';
 import ChordsCreator from './ChordsCreator';
@@ -76,11 +76,11 @@ const LineCreator: React.FC<LineCreatorProps> = (props: LineCreatorProps) => {
 				<Button variant={'outline-dark'} onClick={moveLine(1)} disabled={isLast}>
 					<FontAwesomeIcon icon={faChevronDown} />
 				</Button>
-				<Button variant={'outline-info'} onClick={duplicateLine}>
+				<Button variant={'info'} onClick={duplicateLine}>
 					<FontAwesomeIcon icon={faCopy} />
 				</Button>
-				<Button variant={'outline-danger'} onClick={deleteLine}>
-					<FontAwesomeIcon icon={faTimes} />
+				<Button variant={'danger'} onClick={deleteLine}>
+					<FontAwesomeIcon icon={faTrash} />
 				</Button>
 			</InputGroup.Append>
 		</InputGroup>

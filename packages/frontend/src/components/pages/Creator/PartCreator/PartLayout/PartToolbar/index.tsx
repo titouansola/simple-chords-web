@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { ButtonToolbar, ButtonGroup, Button } from 'react-bootstrap';
-import PartTypeDropdown from './PartTypeDropdown';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash, faCopy } from '@fortawesome/free-solid-svg-icons';
 import { useAppState } from '@scw/store';
 import { Part, PartType, ActionType } from '@scw/models';
+import PartTypeDropdown from './PartTypeDropdown';
 
 interface Props {
 	content: Part;
@@ -39,8 +41,14 @@ const PartToolbar: React.FC<Props> = (props: Props) => {
 	return <ButtonToolbar>
 		<ButtonGroup size={'sm'}>
 			<PartTypeDropdown type={props.content.type} onSelect={changePartType}/>
-			<Button variant={'outline-info'} onClick={duplicatePart}>Duplicate</Button>
-			<Button variant={'outline-danger'} onClick={deletePart}>Delete</Button>
+			<Button variant={'info'} onClick={duplicatePart}>
+				<FontAwesomeIcon icon={faCopy} />&nbsp;
+				Duplicate
+			</Button>
+			<Button variant={'danger'} onClick={deletePart}>
+				<FontAwesomeIcon icon={faTrash} />&nbsp;
+				Delete
+			</Button>
 		</ButtonGroup>
 	</ButtonToolbar>
 };

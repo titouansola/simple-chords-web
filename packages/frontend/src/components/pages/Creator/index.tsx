@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { Router } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import { Form, Row, Col, Button, Spinner } from 'react-bootstrap';
 import { useAppState } from '@scw/store';
 import { publishSong } from '@scw/webservices';
@@ -77,10 +79,15 @@ const CreatorPage: React.FC<any> = () => {
 				</Col>
 			</Row>
 			<Row className={'mt-5'}>
-				<Col>
-					<Button variant={'primary'} type={'submit'} disabled={loading}>
-						{ !loading ? 'Submit' : <Spinner animation={'border'} />}
-					</Button>
+				<Col className={'d-flex justify-content-center'}>
+					<Button variant={'primary'} type={'submit'} size={'lg'} disabled={loading}> {
+						!loading
+						? <span className={'font-weight-bold'}>
+							<FontAwesomeIcon icon={faPaperPlane} />&nbsp;
+							Publish
+						</span>
+						: <Spinner animation={'border'} />
+					} </Button>
 				</Col>
 			</Row>
 		</Form>

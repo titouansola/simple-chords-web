@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Draggable, { DraggableData } from 'react-draggable';
+import { StyleSheet, css } from 'aphrodite';
 import { CHORD_OFFSET } from '@scw/constants';
 import { useAppState } from '@scw/store';
 import { Chord, ActionType } from '@scw/models';
@@ -14,9 +15,11 @@ interface Props {
 
 const DraggableChord: React.FC<Props> = (props: Props) => {
 	const [_, dispatch] = useAppState();
+	const [grabbing, setGrabbing] = React.useState(false);
 	const [delta, setDelta] = React.useState(0);
 
 	const onStart = (e: MouseEvent) => {
+		setGrabbing(true);
 		if (e.shiftKey) {
 			dispatch({
 				type: ActionType.DUPLICATE_CHORD,
@@ -34,6 +37,7 @@ const DraggableChord: React.FC<Props> = (props: Props) => {
 	};
 
 	const onStop = () => {
+		setGrabbing(false);
 		dispatch({
 			type: ActionType.UPDATE_CHORD,
 			payload: {
@@ -50,7 +54,6 @@ const DraggableChord: React.FC<Props> = (props: Props) => {
 	};
 
 	const checkAltKeyAndDeleteChord = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-		console.log(props.order, props.chord)
 		if (event.altKey) {
 			dispatch({
 				type: ActionType.DEL_CHORD,
@@ -79,11 +82,20 @@ const DraggableChord: React.FC<Props> = (props: Props) => {
 			onStop={onStop}
 			handle={'.handle'}
 		>
-			<div onClick={checkAltKeyAndDeleteChord} className={'handle chord'} style={{ opacity: .8 }}>
+			<div
+				onClick={checkAltKeyAndDeleteChord}
+				className={'handle chord ' + css(styles.lowOpacity, grabbing ? styles.dragging : styles.draggable)}
+			>
 				{chordTostring(props.chord)}
 			</div>
 		</Draggable>
 	);
 };
+
+const styles = StyleSheet.create({
+	lowOpacity: { opacity: .8 },
+	draggable: { cursor: 'grab' },
+	dragging: { cursor: 'grabbing' }
+});
 
 export default DraggableChord;

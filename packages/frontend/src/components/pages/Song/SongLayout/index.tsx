@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Row, Col, Button } from 'react-bootstrap';
+import { Row, Col, ButtonGroup, Button } from 'react-bootstrap';
 import { useKeyboardShortcut } from 'crooks';
 import { Song } from '@scw/models';
 import PartLayout from './PartLayout';
@@ -34,16 +34,18 @@ const SongLayout: React.FC<SongProps> = (props: SongProps) => {
 				</p>
 			</Col>
 		</Row>
-		<Row>
-			<Col>
-				<PartLayout content={song.parts[step]}/>
+		<Row className={'mb-3'}>
+			<Col className={'justify-content-between'}>
+				<ButtonGroup>
+					<Button variant={'primary'} onClick={() => setStep(0)}>Back to beginning</Button>
+					<Button variant={'outline-primary'} onClick={prevStep}>Previous</Button>
+					<Button variant={'outline-primary'} onClick={nextStep}>Next</Button>
+				</ButtonGroup>
 			</Col>
 		</Row>
 		<Row>
-			<Col className={'justify-content-between'}>
-				<Button onClick={() => setStep(0)}>Back to beginning</Button>
-				<Button onClick={prevStep}>Previous</Button>
-				<Button onClick={nextStep}>Next</Button>
+			<Col>
+				<PartLayout content={song.parts[step]}/>
 			</Col>
 		</Row>
 	</React.Fragment>

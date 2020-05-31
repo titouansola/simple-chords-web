@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
 		position: 'relative',
 		margin: '10px 0',
 		height: 26,
-		border: '1px solid black',
+		border: '1px solid #ced4da',
 		overflowX: 'auto'
 	},
 	clickableBg: {

@@ -14,7 +14,7 @@ const PartTypeDropdown: React.FC<Props> = (props: Props) => {
 		<DropdownButton
 			as={ButtonGroup}
 			size={'sm'}
-			variant={'outline-primary'}
+			variant={'outline-info'}
 			id={'part-type-selector'}
 			onSelect={props.onSelect}
 			title={props.type ? capitalizeFirstChar(props.type) : 'Choose a type'}
