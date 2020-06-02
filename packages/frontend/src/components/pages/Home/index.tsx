@@ -3,21 +3,30 @@ import { useAppState } from '@scw/store';
 import { fetchAllSongs } from '@scw/webservices';
 import { ActionType } from '@scw/models';
 import SongList from './SongList';
+import Filters from './Filters';
+import Pager from './Pager';
 
 const HomePage: React.FC<any> = () => {
 	const [{ song }, dispatch] = useAppState();
 
 	React.useEffect(() => {
-		fetchAllSongs().then(({ songs }) => {
-			dispatch({
-				type: ActionType.FETCH_ALL_SONGS,
-				payload: songs
-			})
-		})
-	}, [dispatch]);
+		if (song.fetch) {
+			fetchAllSongs({ ...song.filters, page: song.page }).then(songPage => {
+				dispatch({
+					type: ActionType.FETCH_ALL_SONGS,
+					payload: songPage
+				});
+			});
+		}
+	}, [song.fetch]);
 
 	return song.list.length > 0 ?
-		<SongList list={song.list} />
+		<>
+			<Filters />
+			<Pager />
+			<SongList list={song.list} />
+			<Pager />
+		</>
 		: <div>Loading...</div>
 };
 

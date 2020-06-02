@@ -11,7 +11,7 @@ const App: React.FC<any> = () => {
 			<Header />
 			<Container className={'mt-5'} fluid>
 				<Row>
-					<Col xs={{ offset: 2, span: 8 }}>
+					<Col xs={12} md={{ offset: 1, span: 10 }} lg={{ offset: 2, span: 8 }}>
 						<Switch>
 							{/* PRIVATE ROUTES */}
 							<Route path='/creator'>

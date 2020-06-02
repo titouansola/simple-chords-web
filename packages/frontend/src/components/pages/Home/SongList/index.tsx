@@ -26,7 +26,7 @@ const SongList: React.FC<SongListProps> = (props: SongListProps) => {
 		<tbody>
 			{
 				props.list.map((song: Song, key) => (
-					<tr key={key} onClick={() => goToSong(song.id)}>
+					<tr style={{ cursor: 'pointer' }} key={key} onClick={() => goToSong(song.id)}>
 						<td>{song.title}</td>
 						<td>{song.author}</td>
 						<td>{song.instrument}</td>
